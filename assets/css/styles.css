@@ -13,7 +13,6 @@ a {
     background-color: #428bca;
     color: #ffffff;
     padding: 5px 20px;
-
 }
 
 header{
@@ -78,11 +77,10 @@ main{
 .footer-logo{
     text-align: center;
     padding: 15px;
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    height:auto;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .status {
@@ -98,9 +96,10 @@ main{
     margin:0;
 }
 
+
+/*javascript*/
 .up > p {
     color: green;
-
 }
 
 .down > p {

@@ -49,3 +49,4 @@ document.querySelectorAll(".itemButtons a").forEach(link => {
             link.parentElement.appendChild(statusMessage);
         });
 });
+
