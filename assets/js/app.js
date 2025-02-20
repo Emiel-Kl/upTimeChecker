@@ -37,15 +37,15 @@ document.querySelectorAll(".itemButtons a").forEach(link => {
 
     fetch(site, { mode: 'no-cors' })
         .then(() => {
-            const statusMessage = document.createElement('div');
+            const statusMessage = document.createElement('span');
             statusMessage.classList.add('status', 'up');
-            statusMessage.innerHTML = ` ✅ <a href="${site}" target="_blank">${site}</a> is online`;
+            statusMessage.innerHTML = '<p>✅  is online</p>';
             link.parentElement.appendChild(statusMessage);
         })
         .catch(() => {
-            const statusMessage = document.createElement('div');
+            const statusMessage = document.createElement('span');
             statusMessage.classList.add('status', 'down');
-            statusMessage.innerHTML = ` ❌ <a href="${site}" target="_blank">${site}</a> is offline`;
+            statusMessage.innerHTML = '<p>❌  is offline</p>';
             link.parentElement.appendChild(statusMessage);
         });
 });
