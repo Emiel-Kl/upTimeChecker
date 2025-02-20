@@ -1,7 +1,10 @@
-body{
-    background-color: #F1EEF0; /**/
-    margin: 0;
+html, body{
+    background-color: #F1EEF0;
     font: 400 15px / 1.8 Lato, sans-serif;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -35,8 +38,10 @@ header{
 
 /*main*/
 main{
-    margin:auto;
-    width:90%
+    flex:1;
+    margin: auto;
+    width:90%;
+    padding:20px;
 }
 
 .itemButtons {
@@ -77,10 +82,7 @@ main{
     /*footer*/
 .footer-logo{
     text-align: center;
-    padding: 15px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    padding-bottom: 15px;
     width: 100%;
 }
 
