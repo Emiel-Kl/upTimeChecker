@@ -31,22 +31,64 @@ sites.forEach(site => {
 });
 */
 
+function checkLinks() {
+    document.querySelectorAll(".itemButtons a").forEach(link => {
+        const site = link.href;
+
+        fetch(site, { mode: 'no-cors' })
+            .then(() => {
+                const statusMessage = document.createElement('span');
+                statusMessage.classList.add('status', 'up');
+                statusMessage.innerHTML = '<p>✅  is online</p>';
+                link.parentElement.appendChild(statusMessage);
+            })
+            .catch(() => {
+                const statusMessage = document.createElement('span');
+                statusMessage.classList.add('status', 'down');
+                statusMessage.innerHTML = '<p>⚠️  Kan niet laden</p>';
+                link.parentElement.appendChild(statusMessage);
+            });
+    });
+}
+checkLinks()
+
+
+setInterval(() => {
+    location.reload();
+    }, 180000);
+
+
+/*
+const statusMessage = document.createElement('span');
+            statusMessage.classList.add('status', 'down');
+            statusMessage.innerHTML = '<p>❌  is offline</p>';
+            link.parentElement.appendChild(statusMessage);
+
 
 document.querySelectorAll(".itemButtons a").forEach(link => {
     const site = link.href;
+    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(site)}`;
 
-    fetch(site, { mode: 'no-cors' })
-        .then(() => {
+    fetch(proxyUrl)
+        .then(response => {
             const statusMessage = document.createElement('span');
-            statusMessage.classList.add('status', 'up');
-            statusMessage.innerHTML = '<p>✅  is online</p>';
+
+            if(response.ok) {
+                statusMessage.classList.add('status', 'up');
+                statusMessage.innerHTML = '<p>✅ is online</p>';
+            } else {
+                statusMessage.classList.add('status', 'off');
+                statusMessage.innerHTML = `<p>❌ Fout (${response.status})</p>`;
+            }
+
             link.parentElement.appendChild(statusMessage);
         })
-        .catch(() => {
+        .catch(error => {
             const statusMessage = document.createElement('span');
             statusMessage.classList.add('status', 'down');
-            statusMessage.innerHTML = '<p>❌  is offline</p>';
+            statusMessage.innerHTML = '<p>⚠️ Kan niet laden</p>';
             link.parentElement.appendChild(statusMessage);
         });
 });
 
+*/
