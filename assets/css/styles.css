@@ -48,7 +48,7 @@ main{
     margin:20px;
 }
 
-.itemButtons > div {
+.itemButtons > article {
     background-color: #ffffff;
     display: block;
     text-decoration: none;
@@ -57,12 +57,12 @@ main{
     padding: 10px 10px;
 }
 
-.itemButtons > div > a {
+.itemButtons > article > a {
     color: #000000;
     width: 30%;
 }
 
-.itemButtons >div > a:hover {
+.itemButtons >article > a:hover {
     color: #999;
 }
 
@@ -92,7 +92,7 @@ main{
     border-radius: 5px;
 }
 
-.itemButtons > div > span {
+.itemButtons > article > span {
     display: inline-block;
     width: 30%;
     padding:0;

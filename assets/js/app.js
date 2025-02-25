@@ -36,7 +36,7 @@ function checkLinks() {
         const site = link.href;
 
         fetch(site, { mode: 'no-cors' })
-            .then(() => {
+            .then(() => { 
                 const statusMessage = document.createElement('span');
                 statusMessage.classList.add('status', 'up');
                 statusMessage.innerHTML = '<p>✅  is online</p>';
