@@ -30,13 +30,14 @@ sites.forEach(site => {
         });
 });
 */
+/*
 
 function checkLinks() {
     document.querySelectorAll(".itemButtons a").forEach(link => {
         const site = link.href;
 
         fetch(site, { mode: 'no-cors' })
-            .then(() => { 
+            .then(() => {
                 const statusMessage = document.createElement('span');
                 statusMessage.classList.add('status', 'up');
                 statusMessage.innerHTML = '<p>✅  is online</p>';
@@ -57,6 +58,35 @@ setInterval(() => {
     location.reload();
     }, 180000);
 
+*/
+function checkLinks() {
+    document.querySelectorAll(".itemButtons a").forEach(link => {
+        const site = link.href;
+        fetch(`http://localhost:3000/check?url=${encodeURIComponent(site)}`)
+            .then(response => response.json())
+            .then(data => {
+                const statusMessage = document.createElement('span');
+                statusMessage.classList.add('status');
+                if (data.status === 200) {
+                    statusMessage.classList.add('up');
+                    statusMessage.innerHTML = `<p>✅ Online (Status: ${data.status})</p>`;
+                } else if (data.status === "offline") {
+                    statusMessage.classList.add('down');
+                    statusMessage.innerHTML = `<p>❌ Offline</p>`;
+                } else {
+                    statusMessage.classList.add('error');
+                    statusMessage.innerHTML = `<p>⚠️ Error (Status: ${data.status})</p>`;
+                }
+                link.parentElement.appendChild(statusMessage);
+            })
+})}
+checkLinks()
+
+
+setInterval(() => {
+    document.querySelectorAll(".status").forEach(el => el.remove()); // Remove old statuses
+    checkLinks();
+}, 180000);
 
 /*
 const statusMessage = document.createElement('span');
@@ -90,5 +120,4 @@ document.querySelectorAll(".itemButtons a").forEach(link => {
             link.parentElement.appendChild(statusMessage);
         });
 });
-
 */

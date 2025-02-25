@@ -102,13 +102,13 @@ main{
 
 /*javascript*/
 .up > p {
-    color: green;
+    color: #008000;
 }
 
-.down > p {
+.error > p {
     color: #F3AF37;
 }
 
-.off > p {
+.down > p {
     color: #FF0000;
 }
